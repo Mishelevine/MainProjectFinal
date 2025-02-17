@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MainProject</string>
+    <string name="studentTimetableButton">Students Timetable</string>
+    <string name="teachersTimetableButton">Teachers Timetable</string>
+    <string name="getStudentsTimetable">Button pressed: Students Timetable</string>
+    <string name="getTeachersTimetable">ButtonPressed: Teachers Timetable</string>
+    <string name="hse_logo">HSE_logo</string>
+    <string name="enter_number">Enter number</string>
+    <string name="calculate_sum">Sum</string>
+    <string name="calculate_product">Product</string>
+    <string name="result">Result</string>
+    <string name="sum_result">Sum: %d</string>
+    <string name="product_result">Product: %d</string>
+    <string name="invalid_input">Error: Please enter a whole number</string>
+    <string name="invalid_input_min">Error: Input can\'t be lower than 2</string>
+    <string name="invalid_input_max">Error: Input number is too big (max 20)</string>
+</resources>
