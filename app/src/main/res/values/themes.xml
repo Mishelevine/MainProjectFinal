@@ -7,5 +7,10 @@
         <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
     </style>
 
+    <style name="LabelStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorSecondary</item>
+    </style>
+
     <style name="Theme.MainProject" parent="Base.Theme.MainProject" />
 </resources>

@@ -36,7 +36,8 @@
         app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintWidth_percent="0.6"
-        app:layout_constraintHeight_percent="0.5"/>
+        app:layout_constraintHeight_percent="0.5"
+        android:layout_marginTop="10dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/buttonContainer"
@@ -52,7 +53,7 @@
             android:id="@+id/studentsTimetable"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/studentTimetableButton"
+            android:text="@string/student_timetable_button"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +64,7 @@
             android:id="@+id/teachersTimetable"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/teachersTimetableButton"
+            android:text="@string/teacher_timetable_button"
             app:layout_constraintTop_toBottomOf="@id/studentsTimetable"
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"

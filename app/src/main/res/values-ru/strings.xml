@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MainProject</string>
-    <string name="studentTimetableButton">Расписание для студентов</string>
-    <string name="teachersTimetableButton">Расписание для преподавателей</string>
-    <string name="getStudentsTimetable">Нажата кнопка: Расписание студентов</string>
-    <string name="getTeachersTimetable">Нажата кнопка: Расписание преподавателей</string>
+    <string name="student_timetable_button">Расписание для студентов</string>
+    <string name="teacher_timetable_button">Расписание для преподавателей</string>
     <string name="hse_logo">HSE_logo</string>
-    <string name="enter_number">Введите число</string>
-    <string name="calculate_sum">Посчитать сумму</string>
-    <string name="calculate_product">Посчитать произведение</string>
-    <string name="result">Результат</string>
-    <string name="sum_result">Сумма: %d</string>
-    <string name="product_result">Произведение: %d</string>
-    <string name="invalid_input">Ошибка: Введите корректное число</string>
-    <string name="invalid_input_min">Ошибка: Введенное число не может быть меньше 2</string>
-    <string name="invalid_input_max">Ошибка: Число слишком большое (максимум 20)</string>
+    <string name="choose_group">Выберите группу:</string>
+    <string name="time_label">Сейчас:</string>
+    <string name="class_status">Идет пара / Нет пар</string>
+    <string name="subject">Дисциплина</string>
+    <string name="classroom">Кабинет</string>
+    <string name="building">Корпус</string>
+    <string name="teacher">Преподаватель</string>
+    <string name="daily_timetable_button">РАСПИСАНИЕ НА ДЕНЬ</string>
+    <string name="weekly_timetable_button">РАСПИСАНИЕ НА НЕДЕЛЮ</string>
+    <string name="current_time">текущее время</string>
+    <string name="choose_teacher">Выберите преподавателя:</string>
 </resources>

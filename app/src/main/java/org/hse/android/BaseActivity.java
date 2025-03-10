@@ -1,8 +1,8 @@
 package org.hse.android;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,14 +18,15 @@ public class BaseActivity extends AppCompatActivity {
 
         studentsTimetableButton.setOnClickListener(v -> getStudentsTimetable());
         teachersTimetableButton.setOnClickListener(v -> getTeachersTimetable());
-
     }
 
     private void getStudentsTimetable(){
-        Toast.makeText(BaseActivity.this, R.string.getStudentsTimetable, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, StudentActivity.class);
+        startActivity(intent);
     }
 
     private void getTeachersTimetable(){
-        Toast.makeText(BaseActivity.this, R.string.getTeachersTimetable, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, TeacherActivity.class);
+        startActivity(intent);
     }
 }
