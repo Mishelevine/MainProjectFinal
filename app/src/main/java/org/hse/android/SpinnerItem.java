@@ -2,11 +2,11 @@ package org.hse.android;
 
 import androidx.annotation.NonNull;
 
-public class Group {
+public class SpinnerItem {
     private Integer id;
     private String name;
 
-    public Group(Integer id, String name) {
+    public SpinnerItem(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
