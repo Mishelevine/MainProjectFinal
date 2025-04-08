@@ -14,4 +14,11 @@
     <string name="weekly_timetable_button">WEEKLY TIMETABLE</string>
     <string name="current_time">time now</string>
     <string name="choose_teacher">Choose Teacher:</string>
+    <string name="settings_button">Settings</string>
+    <string name="photo_request">Choose your photo:</string>
+    <string name="make_photo_button">MAKE PHOTO</string>
+    <string name="name_input">Input your name</string>
+    <string name="current_light_data">Current light:</string>
+    <string name="save_settings_button">SAVE</string>
+    <string name="profile_image_icon" translatable="false">profile_image_icon</string>
 </resources>

@@ -20,7 +20,7 @@ public class TeacherActivity extends BaseActivity {
         List<SpinnerItem> spinnerItems = new ArrayList<>();
         spinnerItems.add(new SpinnerItem(1, "Преподаватель 1"));
         spinnerItems.add(new SpinnerItem(2, "Преподаватель 2"));
-        spinnerItems.add(new SpinnerItem(3, "Преподаватель 2"));
+        spinnerItems.add(new SpinnerItem(3, "Преподаватель 3"));
         return spinnerItems;
     }
 }

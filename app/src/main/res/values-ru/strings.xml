@@ -15,4 +15,10 @@
     <string name="weekly_timetable_button">РАСПИСАНИЕ НА НЕДЕЛЮ</string>
     <string name="current_time">текущее время</string>
     <string name="choose_teacher">Выберите преподавателя:</string>
+    <string name="settings_button">Настройки</string>
+    <string name="photo_request">Укажите фото:</string>
+    <string name="make_photo_button">СДЕЛАТЬ ФОТО</string>
+    <string name="name_input">Укажите ваше имя</string>
+    <string name="current_light_data">Текущая освещенность:</string>
+    <string name="save_settings_button">СОХРАНИТЬ</string>
 </resources>

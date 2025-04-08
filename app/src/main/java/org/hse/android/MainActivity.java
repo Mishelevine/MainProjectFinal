@@ -15,9 +15,11 @@ public class MainActivity extends AppCompatActivity {
 
         Button studentsTimetableButton = findViewById(R.id.studentsTimetable);
         Button teachersTimetableButton = findViewById(R.id.teachersTimetable);
+        Button settingsButton = findViewById(R.id.settings);
 
         studentsTimetableButton.setOnClickListener(v -> getStudentsTimetable());
         teachersTimetableButton.setOnClickListener(v -> getTeachersTimetable());
+        settingsButton.setOnClickListener(v -> getSettings());
     }
 
     private void getStudentsTimetable(){
@@ -27,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void getTeachersTimetable(){
         Intent intent = new Intent(this, TeacherActivity.class);
+        startActivity(intent);
+    }
+
+    private void getSettings(){
+        Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 }
