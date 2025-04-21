@@ -32,4 +32,7 @@
     <string name="name_saved_message">Имя сохранено</string>
     <string name="photo_saved_message">Фото сохранено</string>
     <string name="saving_photo_error">Ошибка сохранения фото</string>
+    <string name="time_not_available">Ошибка получения времени</string>
+    <string name="shcedule_week_title_postfix">" на неделю"</string>
+    <string name="shcedule_day_title_postfix">" на день"</string>
 </resources>

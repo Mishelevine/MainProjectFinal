@@ -1,5 +1,8 @@
 package org.hse.android;
 
+import android.os.Bundle;
+import android.view.View;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +10,17 @@ public class StudentActivity extends BaseActivity {
     private static final List<String> PROGRAMS = List.of("РИС", "МБ");
     private static final List<String> YEARS = List.of("22", "23", "24");
     private static final int GROUPS_NUM = 4;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        View scheduleDayButton = findViewById(R.id.day_schedule);
+        View scheduleWeekButton = findViewById(R.id.week_schedule);
+
+        scheduleDayButton.setOnClickListener(v -> showSchedule(ScheduleType.DAY));
+        scheduleWeekButton.setOnClickListener(v -> showSchedule(ScheduleType.WEEK));
+    }
 
     @Override
     protected int getLayoutResId() {
@@ -30,5 +44,9 @@ public class StudentActivity extends BaseActivity {
             }
         }
         return spinnerItems;
+    }
+
+    private void showSchedule(ScheduleType type) {
+        super.showSchedule(ScheduleMode.STUDENT, type);
     }
 }
