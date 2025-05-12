@@ -9,33 +9,23 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
-import com.google.gson.Gson;
-
-import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
 
 public abstract class BaseActivity extends AppCompatActivity {
     protected static final String TAG = "BaseActivity";
     protected TextView time, status, subject, cabinet, corp, teacher;
     protected Spinner spinner;
 
-    public static final String URL = "https://api.ipgeolocation.io/ipgeo?apiKey=b03018f75ed94023a005637878ec0977";
     protected Date currentTime;
-    private final OkHttpClient client = new OkHttpClient();
+
+    protected SpinnerItem selectedSpinnerItem = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,62 +42,15 @@ public abstract class BaseActivity extends AppCompatActivity {
         teacher = findViewById(R.id.teacher);
 
         initTime();
-        initData();
+        initDataFromTimeTable();
         setupSpinner();
     }
 
     protected void initTime() {
-        getTime();
+        TimeViewModel timeViewModel = new ViewModelProvider(this).get(TimeViewModel.class);
+        timeViewModel.getTime().observe(this, this::showTime);
     }
 
-    protected void getTime() {
-        Request request = new Request.Builder().url(URL).build();
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                parseResponse(response);
-            }
-
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                Log.e(TAG, "getTime failed", e);
-                runOnUiThread(() -> showTime(new Date()));
-            }
-        });
-    }
-
-    private void parseResponse(Response response) {
-        Gson gson = new Gson();
-        try (ResponseBody body = response.body()) {
-            TimeResponse timeResponse = null;
-            if (body == null) {
-                Log.e(TAG, "Response body is null");
-                runOnUiThread(() -> showTime(new Date()));
-                return;
-            }
-            String string = body.string();
-            Log.d(TAG, "API Response: " + string);
-
-            timeResponse = gson.fromJson(string, TimeResponse.class);
-
-            if (timeResponse == null || timeResponse.getTimeZone() == null || timeResponse.getTimeZone().getCurrentTime() == null) {
-                Log.e(TAG, "Failed to parse time response or time is null");
-                runOnUiThread(() -> showTime(new Date()));
-                return;
-            }
-
-            String currentTimeVal = timeResponse.getTimeZone().getCurrentTime();
-
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.getDefault());
-            Date dateTime = simpleDateFormat.parse(currentTimeVal);
-
-            runOnUiThread(() -> showTime(dateTime));
-
-        } catch (Exception e) {
-            Log.e(TAG, "Error parsing response", e);
-            runOnUiThread(() -> showTime(new Date()));
-        }
-    }
 
     private void showTime(Date dateTime) {
         if (dateTime == null) {
@@ -118,14 +61,22 @@ public abstract class BaseActivity extends AppCompatActivity {
         currentTime = dateTime;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm, EEEE", new Locale("ru"));
         time.setText(simpleDateFormat.format(currentTime));
+
+        if (selectedSpinnerItem != null) {
+            onSpinnerItemChanged(selectedSpinnerItem);
+        }
     }
 
-    protected void initData() {
-        status.setText(getString(R.string.class_status));
-        subject.setText(getString(R.string.subject));
-        cabinet.setText(getString(R.string.classroom));
-        corp.setText(getString(R.string.building));
-        teacher.setText(getString(R.string.teacher));
+    protected void initDataFromTimeTable() {
+        if (selectedSpinnerItem != null && currentTime != null) {
+            onSpinnerItemChanged(selectedSpinnerItem);
+        } else {
+            status.setText(getString(R.string.class_status));
+            subject.setText(getString(R.string.subject));
+            cabinet.setText(getString(R.string.classroom));
+            corp.setText(getString(R.string.building));
+            teacher.setText(getString(R.string.teacher));
+        }
     }
 
     protected void setupSpinner() {
@@ -139,6 +90,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View itemSelected, int selectedItemPosition, long selectedId) {
                 SpinnerItem item = adapter.getItem(selectedItemPosition);
                 Log.d(TAG, "Selected item: " + item);
+                onSpinnerItemChanged(item);
             }
 
             @Override
@@ -151,6 +103,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract int getLayoutResId();
     protected abstract int getSpinnerId();
     protected abstract List<SpinnerItem> getSpinnerItems();
+    protected abstract void onSpinnerItemChanged(SpinnerItem selected);
 
     protected void showSchedule(ScheduleMode mode, ScheduleType type) {
         Object selectedItem = spinner.getSelectedItem();
@@ -168,6 +121,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         intent.putExtra(ScheduleActivity.ARG_TYPE, type);
         intent.putExtra(ScheduleActivity.ARG_MODE, mode);
         intent.putExtra(ScheduleActivity.ARG_NAME, item.getName());
+        intent.putExtra(ScheduleActivity.ARG_TIME, currentTime.getTime());
 
         startActivity(intent);
     }

@@ -35,4 +35,12 @@
     <string name="time_not_available">Error getting current time</string>
     <string name="shcedule_week_title_postfix">" weekly"</string>
     <string name="shcedule_day_title_postfix">" daily"</string>
+    <string name="lesson_type_1">LECTURE</string>
+    <string name="lesson_type_3">PRACTICE</string>
+    <string name="lesson_type_2">RESEARCH SEMINAR</string>
+    <string name="lesson_type_default">LESSON</string>
+    <string name="lesson_is_going_message">Lesson is going</string>
+    <string name="lesson_is_not_going_message">Lesson is not going</string>
+    <string name="group_spinner_select">Select group</string>
+    <string name="teacher_spinner_select">Select teacher</string>
 </resources>

@@ -17,7 +17,7 @@
         android:paddingEnd="16dp"
         android:paddingTop="16dp"
         android:paddingBottom="8dp"
-        tools:text="Заголовок расписания" /> <!-- Placeholder -->
+        tools:text="Заголовок расписания" />
 
     <TextView
         android:id="@+id/current_date_text"

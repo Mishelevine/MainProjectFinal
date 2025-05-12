@@ -123,7 +123,7 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
-    interface OnItemClick {
+    public interface OnItemClick {
         void onClick(ScheduleItem data);
     }
 }
